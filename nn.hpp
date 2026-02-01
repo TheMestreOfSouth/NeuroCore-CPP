@@ -16,13 +16,14 @@ public:
     bool nonlin;
 
     Neuron(int nin, bool nonlin = true) : nonlin(nonlin) {
-        std::default_random_engine generator;
+        std::random_device rd;
+        std::mt19937 generator(rd());
         std::uniform_real_distribution<double> distribution(-1.0, 1.0);
         
         for (int i = 0; i < nin; i++) {
             w.push_back(std::make_shared<Value>(distribution(generator)));
         }
-        b = std::make_shared<Value>(0.0);
+        b = std::make_shared<Value>(distribution(generator));
     }
 
     std::shared_ptr<Value> operator()(std::vector<std::shared_ptr<Value>> x) {
