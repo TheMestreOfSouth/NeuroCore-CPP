@@ -114,4 +114,4 @@ Potential extensions:
 
 ## License
 
-This project is provided for educational purposes.
+This project is provided for educational purposes
